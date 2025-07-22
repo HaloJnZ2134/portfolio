@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Roblox Scripter Portfolio of fwreal (hello4444nl) – 3+ years experience, 1.5M+ game visits. Specializing in Luau scripting and scalable game systems." />
+  <meta name="description" content="Roblox Scripter Portfolio of fwreal (hello4444nl) – 3+ years experience, 1.5M+ game visits." />
   <title>fwreal | Roblox Scripter Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -28,6 +28,45 @@
       color: var(--fg);
       line-height: 1.6;
       padding: 1rem;
+      transition: background 1s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body.gradient {
+      background: linear-gradient(270deg, #1a1a1a, #00afff, #1a1a1a);
+      background-size: 600% 600%;
+      animation: gradientBG 10s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    canvas#particles {
+      position: fixed;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    #wave-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #wave-bg svg {
+      width: 100%;
+      height: 100%;
     }
 
     header {
@@ -112,21 +151,10 @@
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      .tagline {
-        font-size: 1rem;
-      }
-
-      .game-preview {
-        padding: 1rem;
-      }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .tagline { font-size: 1rem; }
+      .game-preview { padding: 1rem; }
     }
   </style>
 </head>
@@ -136,17 +164,20 @@
     <p class="tagline">Roblox Scripter | 3+ Years Experience | 1.5M+ Game Visits</p>
   </header>
 
+  <div style="text-align:center; margin: 1.5rem 0;">
+    <label for="bg-style" style="font-weight: bold; color: #ccc;">🌌 Background Style:</label>
+    <select id="bg-style" onchange="changeBackground()" style="padding: 0.5rem; border-radius: 5px;">
+      <option value="gradient">Gradient Shift</option>
+      <option value="particles">Particle Field</option>
+      <option value="waves">Waves</option>
+    </select>
+  </div>
+
   <main>
     <section>
       <h2>About Me</h2>
-      <p>
-        Hey! I'm <strong>fwreal</strong>, a dedicated Roblox scripter with over 3 years of experience, including 1.5 years of serious, full-time development. I specialize in
-        <strong>Luau scripting</strong> using both Roblox Studio and Visual Studio Code.
-      </p>
-      <p>
-        I’ve built advanced systems for a wide range of game genres — from "Hood" style games to simulators. I also enjoy working with
-        <strong>Python</strong> and <strong>JavaScript</strong>, and I’ve been diving deep into metadata-based systems lately.
-      </p>
+      <p>Hey! I'm <strong>fwreal</strong>, a dedicated Roblox scripter with over 3 years of experience, including 1.5 years of serious, full-time development. I specialize in <strong>Luau scripting</strong> using both Roblox Studio and Visual Studio Code.</p>
+      <p>I’ve built advanced systems for a wide range of game genres — from "Hood" style games to simulators. I also enjoy working with <strong>Python</strong> and <strong>JavaScript</strong>, and I’ve been diving deep into metadata-based systems lately.</p>
     </section>
 
     <section>
@@ -181,8 +212,90 @@
     </section>
   </main>
 
+  <div id="wave-bg" style="display: none;">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#00afff" fill-opacity="0.2">
+        <animate attributeName="d" dur="10s" repeatCount="indefinite"
+          values="
+            M0,160 C480,220 960,100 1440,160 L1440,320 L0,320 Z;
+            M0,120 C480,180 960,80 1440,120 L1440,320 L0,320 Z;
+            M0,160 C480,220 960,100 1440,160 L1440,320 L0,320 Z;
+          " />
+      </path>
+    </svg>
+  </div>
+
+  <canvas id="particles" style="display: none;"></canvas>
+
   <footer>
     &copy; 2025 fwreal (hello4444nl) — Built with ❤️ for the Roblox developer community.
   </footer>
+
+  <script>
+    function changeBackground() {
+      const body = document.body;
+      const value = document.getElementById('bg-style').value;
+      const canvas = document.getElementById('particles');
+      const wave = document.getElementById('wave-bg');
+
+      body.className = '';
+      canvas.style.display = 'none';
+      wave.style.display = 'none';
+
+      if (value === 'gradient') {
+        body.classList.add('gradient');
+      } else if (value === 'particles') {
+        canvas.style.display = 'block';
+        initParticles();
+      } else if (value === 'waves') {
+        wave.style.display = 'block';
+      }
+    }
+
+    function initParticles() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particles = [];
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2 + 1,
+          dx: Math.random() - 0.5,
+          dy: Math.random() - 0.5
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = '#00afff';
+          ctx.fill();
+        });
+        update();
+      }
+
+      function update() {
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+      }
+
+      setInterval(draw, 30);
+    }
+
+    window.onload = () => {
+      changeBackground();
+    };
+  </script>
 </body>
 </html>
