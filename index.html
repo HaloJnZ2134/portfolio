@@ -2,103 +2,187 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Roblox Scripter Portfolio of fwreal (hello4444nl) – 3+ years experience, 1.5M+ game visits. Specializing in Luau scripting and scalable game systems." />
   <title>fwreal | Roblox Scripter Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #eee;
+    :root {
+      --bg: #111;
+      --fg: #eee;
+      --accent: #00afff;
+      --muted: #aaa;
+      --card-bg: #1a1a1a;
+      --border: #333;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
     header {
       background: #222;
-      padding: 2rem;
       text-align: center;
+      padding: 3rem 1rem;
     }
+
     h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.75rem;
+      margin-bottom: 0.5rem;
     }
+
     .tagline {
-      color: #aaa;
+      color: var(--muted);
       font-style: italic;
+      font-size: 1.1rem;
     }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
     section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      margin-bottom: 3rem;
     }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+    }
+
+    p, li {
+      margin-bottom: 0.75rem;
+    }
+
     a {
-      color: #00afff;
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
     }
+
+    a:hover {
+      color: #33c6ff;
+      text-decoration: underline;
+    }
+
     .game-preview {
-      margin-top: 1rem;
-      border: 1px solid #333;
-      padding: 1rem;
-      background: #1a1a1a;
-      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
+    .game-preview:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 15px rgba(0, 175, 255, 0.1);
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
       color: #666;
-      font-size: 0.9rem;
+      border-top: 1px solid #222;
+    }
+
+    code {
+      background: #222;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .tagline {
+        font-size: 1rem;
+      }
+
+      .game-preview {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>fwreal (hello4444nl)</h1>
-    <p class="tagline">Roblox Scripter | 3+ Years Experience | 1.4M+ Game Visits</p>
+    <h1>fwreal <small style="font-size:1.25rem;">(hello4444nl)</small></h1>
+    <p class="tagline">Roblox Scripter | 3+ Years Experience | 1.5M+ Game Visits</p>
   </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I'm <strong>fwreal</strong>, a passionate Roblox scripter with over 3 years of experience — and 1.5 years of serious development work. 
-      I focus mainly on <strong>Luau scripting</strong> in Roblox Studio and VS Code.
-    </p>
-    <p>
-      I’ve scripted advanced systems for a variety of game types — including "Hood" style games, simulators, and more. 
-      I also work with <strong>Python</strong> and <strong>JavaScript</strong> on the side and have been exploring advanced metadata-based systems for the past 6 months.
-    </p>
-  </section>
+  <main>
+    <section>
+      <h2>About Me</h2>
+      <p>
+        Hey! I'm <strong>fwreal</strong>, a dedicated Roblox scripter with over 3 years of experience, including 1.5 years of serious, full-time development. I specialize in
+        <strong>Luau scripting</strong> using both Roblox Studio and Visual Studio Code.
+      </p>
+      <p>
+        I’ve built advanced systems for a wide range of game genres — from "Hood" style games to simulators. I also enjoy working with
+        <strong>Python</strong> and <strong>JavaScript</strong>, and I’ve been diving deep into metadata-based systems lately.
+      </p>
+    </section>
 
-  <section>
-    <h2>Featured Game: Bronx Streetz</h2>
-    <div class="game-preview">
-      <p><strong>Game:</strong> <a href="https://www.roblox.com/games/16995353837/CONSOLE-Bronx-Streetz" target="_blank">Bronx Streetz</a></p>
-      <p><strong>Description:</strong> Bronx Streetz is based in the Bronx, New York. Players join for intense PvP gunplay and competitive hood gameplay.</p>
-      <p><strong>What I Scripted:</strong></p>
+    <section>
+      <h2>Featured Game: Bronx Streetz</h2>
+      <div class="game-preview">
+        <p><strong>Game:</strong> <a href="https://www.roblox.com/games/16995353837/CONSOLE-Bronx-Streetz" target="_blank" rel="noopener">Bronx Streetz</a></p>
+        <p><strong>Description:</strong> A fast-paced PvP game based in the Bronx, NY — packed with intense gunplay and dynamic hood gameplay.</p>
+        <p><strong>My Contributions:</strong></p>
+        <ul>
+          <li>Modular and scalable gun systems</li>
+          <li>Custom hood mechanics</li>
+          <li>Simulator-compatible backend systems</li>
+          <li>Metadata-driven scripting architecture</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills & Tools</h2>
       <ul>
-        <li>Modular, advanced gun systems</li>
-        <li>Custom hood game mechanics</li>
-        <li>Simulator-ready systems</li>
-        <li>Metadata-driven scripting frameworks</li>
+        <li>💻 Proficient in Luau (Roblox scripting language)</li>
+        <li>🧠 Modular, scalable, and metadata-based code systems</li>
+        <li>🛠 Tools: Roblox Studio + Visual Studio Code</li>
+        <li>📈 Secondary skills: Python & JavaScript</li>
       </ul>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Skills & Tools</h2>
-    <ul>
-      <li>💻 Luau (Roblox scripting language)</li>
-      <li>🧠 Modular & scalable code systems</li>
-      <li>🛠 Roblox Studio + Visual Studio Code</li>
-      <li>📈 Experience with Python & JavaScript</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Contact Me</h2>
-    <p>📧 Email: <a href="mailto:buemail2315@gmail.com">buemail2315@gmail.com</a></p>
-    <p>💬 Discord: <code>maylol1</code></p>
-  </section>
+    <section>
+      <h2>Contact Me</h2>
+      <p>📧 Email: <a href="mailto:buemail2315@gmail.com">buemail2315@gmail.com</a></p>
+      <p>💬 Discord: <code>maylol1</code></p>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 fwreal (hello4444nl) — Built with ❤️ for the Roblox community
+    &copy; 2025 fwreal (hello4444nl) — Built with ❤️ for the Roblox developer community.
   </footer>
 </body>
 </html>
